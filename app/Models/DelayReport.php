@@ -14,7 +14,7 @@ class DelayReport extends Model
     protected $fillable = [
         'order_id',
         'type',
-        'delay_time',
+        'time',
         'created_at',
         'updated_at'
     ];

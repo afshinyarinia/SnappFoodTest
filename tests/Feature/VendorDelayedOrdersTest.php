@@ -36,7 +36,7 @@ test('vendor can see the report of its delayed orders', function () {
     $response->assertStatus(200);
     $this->assertCount(5,$response->json('data'));
     $vendor = Vendor::withCount(['delays as total_delay_time' => function ($query) {
-        $query->select(DB::raw('SUM(delay_time)'));
+        $query->select(DB::raw('SUM(time)'));
     }])
         ->orderBy('total_delay_time','desc')
         ->first();

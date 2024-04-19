@@ -20,7 +20,7 @@ class DelayReportFactory extends Factory
         return [
             'order_id' => Order::factory(),
             'type' => $this->faker->randomElement(['delayed', 'estimated']),
-            'delay_time' => $this->faker->numberBetween(1, 100),
+            'time' => $this->faker->numberBetween(1, 100),
             'created_at' => now(),
             'updated_at' => now()
         ];

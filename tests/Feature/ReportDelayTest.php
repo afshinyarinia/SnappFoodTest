@@ -73,7 +73,7 @@ test('user will get a new estimation if the trip is assigned', function () {
     $this->assertDatabaseHas('delay_reports', [
         'order_id' => $this->order->id,
         'type' => DelayReport::TYPE['ESTIMATED'],
-        'delay_time' => 60,
+        'time' => 60,
     ]);
 
     // assert that the response message is correct

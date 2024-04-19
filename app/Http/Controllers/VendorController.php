@@ -14,11 +14,11 @@ class VendorController extends Controller
     public function getDelayedOrdersReport(): AnonymousResourceCollection
     {
         // get all the delayed orders
-        $vendors =  Vendor::withCount(['delays as total_delay_time' => function ($query) {
-            $query->select(DB::raw('SUM(delay_time)'));
+        $vendors =  Vendor::has('delays')->withCount(['delays as total_delay_time' => function ($query) {
+            $query->select(DB::raw('SUM(time)'));
         }])
             ->orderBy('total_delay_time','desc')
-            ->get();
+            ->paginate(10);
         return VendorDelayedOrdersReport::collection($vendors);
     }
 }

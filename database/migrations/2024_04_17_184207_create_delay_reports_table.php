@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->string('type');
-            $table->integer('delay_time');
+            $table->integer('time');
             $table->timestamps();
         });
     }

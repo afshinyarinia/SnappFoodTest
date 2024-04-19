@@ -27,7 +27,11 @@ class AgentsController extends Controller
         }
         // Get a delayed order assigned to the agent
         $delayedOrder = $this->reportDelayService->assignDelayedOrder();
-
+        if(!$delayedOrder){
+            return response()->json([
+                'message' => 'There Is No Delayed Orders Left'
+            ],404);
+        }
         $delayedOrder->update([
             'agent_id' => $agent->id,
             'status' => DelayedOrder::STATUS['ASSIGNED']

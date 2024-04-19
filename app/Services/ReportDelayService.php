@@ -38,11 +38,15 @@ class ReportDelayService
             // get a new estimation
             $response = $this->GetEstimationsService->getEstimations();
             // report the delay
-            DelayReport::create([
-                'order_id' => $order->id,
-                'type' => DelayReport::TYPE['ESTIMATED'],
-                'delay_time' => $response['estimation']
-            ]);
+            DelayReport::updateOrCreate(
+                [
+                    'order_id' => $order->id,
+                    'type' => DelayReport::TYPE['ESTIMATED']
+                ],
+                [
+                    'time' => $response['estimation']
+                ]
+            );
             return [
                 'message' => 'Order Estimation has been updated',
                 'status' => 200
@@ -52,7 +56,7 @@ class ReportDelayService
         DelayReport::create([
             'order_id' => $order->id,
             'type' => DelayReport::TYPE['DELAYED'],
-            'delay_time' => $order->delivery_time
+            'time' => $order->delivery_time
         ]);
         // push the order to the delay queue in redis
         DelayedOrder::create([
@@ -64,8 +68,8 @@ class ReportDelayService
         ];
     }
 
-    public function assignDelayedOrder(): DelayedOrder
+    public function assignDelayedOrder(): DelayedOrder|null
     {
-        return DelayedOrder::where('status',DelayedOrder::STATUS['WITHOUT_OWNER'])->orderBy('id')->first();
+        return DelayedOrder::where('status',DelayedOrder::STATUS['WITHOUT_OWNER'])->orderBy('id')?->first();
     }
 }

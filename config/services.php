@@ -32,6 +32,7 @@ return [
     ],
     'estimation' => [
         'url' => env('ESTIMATION_SERVICE_URL'),
+        'type' => env('ESTIMATION_SERVICE_TYPE'),
     ],
 
 ];
