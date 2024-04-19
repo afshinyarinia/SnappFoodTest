@@ -27,8 +27,15 @@ test('user can report a delay on order if requirements filled', function () {
         ]));
     // assert that there is a response
     $response->assertStatus(200);
-    // see if there is order_in in redis delayed_orders
-    $this->assertEquals(Redis::lpop('delayed_orders'),$this->order->id);
+    // see if there is order in delayed_orders table
+    $this->assertDatabaseHas('delay_reports',[
+        'order_id' => $this->order->id
+    ]);
+    $this->assertDatabaseHas('delay_reports', [
+        'order_id' => $this->order->id,
+        'type' => DelayReport::TYPE['DELAYED'],
+    ]);
+
 });
 
 test('use can not report a delay on order that is not delayed', function () {

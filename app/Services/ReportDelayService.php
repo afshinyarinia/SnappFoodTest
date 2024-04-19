@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\Agent;
+use App\Models\DelayedOrder;
 use App\Models\DelayReport;
 use App\Models\Order;
 use App\Models\Trip;
@@ -53,10 +55,19 @@ class ReportDelayService
             'delay_time' => $order->delivery_time
         ]);
         // push the order to the delay queue in redis
-        Redis::rpush('delayed_orders', $order->id);
+        DelayedOrder::create([
+           'order_id' => $order->id
+        ]);
         return [
             'message' => 'Order has been reported as delayed',
             'status' => 200
         ];
+    }
+
+    public function getDelayedOrder(Agent $agent)
+    {
+        // TODO: make a repository for different type of queues
+
+        $order_id = Redis::lpop('delayed_orders');
     }
 }

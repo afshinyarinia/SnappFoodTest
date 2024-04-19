@@ -35,4 +35,9 @@ class Order extends Model
     {
         return $this->hasMany(DelayReport::class);
     }
+
+    public function delayedStatus(): HasOne
+    {
+        return $this->hasOne(DelayedOrder::class);
+    }
 }
