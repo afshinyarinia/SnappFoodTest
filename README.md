@@ -26,3 +26,41 @@ docker-compose up -d
 * The project uses Docker Compose to set up the necessary containers for running the Laravel application.
 * Make sure to update the .env file with the appropriate configurations for your Laravel project.
 * You can stop the containers by running docker-compose down in the project directory.
+
+# Running Laravel App Locally
+
+This repository contains a Laravel application that can be easily set up and run locally on your machine.
+
+## Prerequisites
+- PHP installed on your machine
+- Composer installed on your machine
+- MySQL or any other database management system installed on your machine
+
+## Setup Instructions
+1. Clone this repository to your local machine
+2. Navigate to the project directory
+3. Install PHP dependencies by running:
+   ```
+   composer install
+   ```
+4. Copy the `.env.example` file to `.env` and update the database configurations
+5. Generate a new application key by running:
+   ```
+   php artisan key:generate
+   ```
+6. Run the database migrations to set up the database schema:
+   ```
+   php artisan migrate --seed
+   ```
+7. Start the Laravel development server by running:
+   ```
+   php artisan serve
+   ```
+8. You can now access the Laravel application at `http://localhost:8000`
+
+## Additional Notes
+- Make sure to have the necessary PHP extensions and dependencies installed as per Laravel requirements.
+- You can customize the application further by modifying the existing codebase.
+- Remember to secure your application by setting up proper authentication and authorization mechanisms.
+
+Happy coding!
