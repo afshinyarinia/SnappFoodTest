@@ -1,0 +1,91 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "SnappFood Task Api",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/agents/{agent}/get-report": {
+            "get": {
+                "tags": [
+                    "Agents"
+                ],
+                "summary": "Assign A Delayed Order To An Agent",
+                "operationId": "2f10d8c285ad69308024c9387c2f08b6",
+                "parameters": [
+                    {
+                        "name": "agent",
+                        "in": "path",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delayed Order Fetched Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "You Already Have An Assigned Delayed Order To Resolve",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "There Is No Delayed Orders Left",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/orders/{order}/report-delay": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Order A Delayed Item",
+                "operationId": "c03bf238a7c09409d7da4527ebbcb88d",
+                "parameters": [
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example endpoint"
+                    },
+                    "400": {
+                        "description": "Something is Wrong"
+                    }
+                }
+            }
+        },
+        "/api/vendors/get-delayed-orders-report": {
+            "get": {
+                "tags": [
+                    "Vendors"
+                ],
+                "summary": "Get A Report Of Vendors With Most Delays",
+                "operationId": "82db6825294281d27e396a338e1c24c9",
+                "responses": {
+                    "200": {
+                        "description": "An example endpoint"
+                    }
+                }
+            }
+        }
+    }
+}

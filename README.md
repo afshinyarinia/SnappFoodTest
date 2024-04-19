@@ -5,6 +5,9 @@
 
 The project assigned to me for consideration at SnappFood involves the development of a web application using the Laravel framework.Through this project, I look forward to showcasing my skills and creativity to contribute to the success of SnappFood's digital presence.
 
+## Project Additional Packages
+* postman collection at `docs/postman`
+* swagger documentation at `http://localhost:8000/api/docs`
 
 # Running Project With Docker
 
@@ -85,3 +88,18 @@ This repository includes a Postman collection that can be used to test the APIs 
 2. You can now use the collection to test the APIs of this project by sending requests to the specified endpoints.
 3. Make sure to update any necessary variables or headers in the collection before sending requests.
 
+# Implementing Swagger Documentation in Laravel
+
+This repository includes Swagger documentation for the Laravel project to document and test API endpoints effectively.
+
+## Steps to Implement Swagger Documentation
+
+1. **Configuration File**: Create a `swagger.php` configuration file in the `config` directory of your Laravel project. Define the necessary settings for Swagger, such as API versions, base URL, security definitions, etc.
+
+2. **API Endpoint Documentation**: Document your API endpoints by adding comments or annotations to your controller methods. Include details such as route, parameters, responses, etc., directly in your code.
+
+3. **Generate Swagger Documentation**: Create a route in your Laravel application that will serve the Swagger documentation. This route should read the configuration file and generate the Swagger documentation dynamically based on your API endpoints.
+
+4. **Render Swagger UI**: Create a view or blade template that will render the Swagger UI in your application. Include the necessary JavaScript and CSS files to display the Swagger documentation.
+
+5. **Access Swagger Documentation**: Once the Swagger documentation is set up, you can access it in your browser in this address `http://localhost:8000/api/docs`. Use the Swagger UI to test your APIs and explore the available endpoints.
