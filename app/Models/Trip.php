@@ -30,7 +30,7 @@ class Trip extends Model
         if (!in_array($value, self::STATUS)) {
             throw new \InvalidArgumentException("Invalid status");
         }
-        $this->attributes['status'] = self::STATUS[$value];
+        $this->attributes['status'] = $value;
     }
 
     public function order(): BelongsTo

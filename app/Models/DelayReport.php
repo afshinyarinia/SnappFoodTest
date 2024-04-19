@@ -12,10 +12,15 @@ class DelayReport extends Model
 
     protected $fillable = [
         'order_id',
-        'reason',
+        'type',
         'delay_time',
         'created_at',
         'updated_at'
+    ];
+
+    public const TYPE = [
+        'DELAYED' => 'delayed',
+        'ESTIMATED' => 'estimated',
     ];
 
     public function order(): BelongsTo

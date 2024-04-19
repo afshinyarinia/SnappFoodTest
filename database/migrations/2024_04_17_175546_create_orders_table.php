@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vendor_id')->constrained();
-            $table->foreignId('trip_id')->constrained();
             $table->string('order_number');
             $table->string('status');
-            $table->decimal('total', 10, 2);
+            $table->integer('total');
             $table->integer('delivery_time');
             $table->timestamps();
         });

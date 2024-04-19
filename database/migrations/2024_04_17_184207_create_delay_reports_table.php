@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('delay_reports', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
-            $table->string('reason');
+            $table->string('type');
             $table->integer('delay_time');
             $table->timestamps();
         });

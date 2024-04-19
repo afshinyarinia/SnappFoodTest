@@ -18,7 +18,6 @@ class OrderFactory extends Factory
     {
         return [
             'vendor_id' => $this->faker->numberBetween(1, 10),
-            'trip_id' => $this->faker->numberBetween(1, 10),
             'order_number' => $this->faker->unique()->randomNumber(8),
             'status' => $this->faker->randomElement(['assigned', 'at_vendor', 'picked', 'delivered']),
             'total' => $this->faker->randomFloat(2, 10, 100),
