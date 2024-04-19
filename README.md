@@ -63,4 +63,25 @@ This repository contains a Laravel application that can be easily set up and run
 - You can customize the application further by modifying the existing codebase.
 - Remember to secure your application by setting up proper authentication and authorization mechanisms.
 
-Happy coding!
+# Getting Postman Collection from Docs/Postman
+
+This repository includes a Postman collection that can be used to test the APIs of this project. Follow the steps below to access and import the Postman collection.
+
+## Steps to Get Postman Collection
+1. Navigate to the `docs/postman` directory in this repository.
+2. Locate the Postman collection file (usually with a `.json` extension).
+3. Click on the file to view its contents.
+4. Copy the content of the file to your clipboard.
+
+## Importing Postman Collection
+1. Open Postman application on your machine.
+2. Click on the "Import" button in the top left corner.
+3. Select the "Paste Raw Text" option.
+4. Paste the copied content from the Postman collection file.
+5. Click on the "Import" button to import the collection into your Postman workspace.
+
+## Using Postman Collection
+1. Once imported, you will see the collection in your Postman workspace.
+2. You can now use the collection to test the APIs of this project by sending requests to the specified endpoints.
+3. Make sure to update any necessary variables or headers in the collection before sending requests.
+
