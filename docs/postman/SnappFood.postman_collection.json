@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "ab54a54f-ee34-4728-bc2e-a827a20de85e",
+		"name": "SnappFood",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6469121"
+	},
+	"item": [
+		{
+			"name": "Report A Delay",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/orders/:order/report-delay",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"orders",
+						":order",
+						"report-delay"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "order",
+							"value": "51"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Report",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/agents/:agent_id/get-report",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"agents",
+						":agent_id",
+						"get-report"
+					],
+					"variable": [
+						{
+							"key": "agent_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Delayed Orders Report",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/vendors/get-delayed-orders-report",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"vendors",
+						"get-delayed-orders-report"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:8000",
+			"type": "string"
+		}
+	]
+}
