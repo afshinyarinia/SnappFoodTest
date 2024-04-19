@@ -6,4 +6,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('order/{order}/report-delay',[DelayReportController::class,'report'])->name('order.report-delay');
+Route::get('agents/{agent}/get-report',[AgentsController::class,'getReport'])->name('agents.agent.get-report');
 Route::post('agents/{agent}/get-report',[AgentsController::class,'getReport'])->name('agents.agent.get-report');

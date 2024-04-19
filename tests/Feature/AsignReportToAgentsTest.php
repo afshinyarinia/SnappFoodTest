@@ -22,7 +22,7 @@ test('agent cant get an order if he has one already assigned to him', function (
        'agent_id' => $this->agent->id,
        'status' => \App\Models\DelayedOrder::STATUS['ASSIGNED']
     ]);
-    $response = $this->postJson(route('agents.agent.get-report',[
+    $response = $this->getJson(route('agents.agent.get-report',[
         'agent' => $this->agent->id
     ]));
     $response->assertStatus(400);
@@ -34,7 +34,7 @@ test('agent assigned a delayed order to process', function () {
         'agent_id' => null
     ]);
     $firstOrder = DelayedOrder::where('status',DelayedOrder::STATUS['WITHOUT_OWNER'])->orderBy('id')->first();
-    $response = $this->postJson(route('agents.agent.get-report',[
+    $response = $this->getJson(route('agents.agent.get-report',[
         'agent' => $this->agent->id
     ]));
     $response->assertStatus(200);
