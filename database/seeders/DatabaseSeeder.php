@@ -2,8 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Agent;
+use App\Models\Order;
+use App\Models\Trip;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Vendor;
+use Carbon\Carbon;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +19,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // create 10 vendors when each have 5 orders
+        // Create 10 vendors
+        $vendors = Vendor::factory()->count(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Create 5 orders for each vendor
+        $vendors->each(function ($vendor) {
+            $vendor->orders()->saveMany(Order::factory()->count(5)->create([
+                'vendor_id' => $vendor->id
+            ]));
+        });
+        // create 5 agents
+        Agent::factory()->count(5)->create();
+        // create order for api check that is delayed
+        $order = Order::factory()->create([
+            'delivery_time' => 30,
+            'status' => Order::STATUS["ON_THE_WAY"],
+            'created_at' => Carbon::now()->subMinutes(40)
         ]);
+        $order->trip()->save(Trip::factory()->create([
+            'status' => Trip::STATUS['ASSIGNED'],
+            'order_id' => $order->id
+        ]));
+
     }
 }

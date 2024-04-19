@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class DelayReportFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => \App\Models\Order::factory(),
+            'order_id' => Order::factory(),
             'type' => $this->faker->randomElement(['delayed', 'estimated']),
             'delay_time' => $this->faker->numberBetween(1, 100),
             'created_at' => now(),

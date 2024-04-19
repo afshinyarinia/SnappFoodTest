@@ -26,7 +26,7 @@ class AgentsController extends Controller
             ],400);
         }
         // Get a delayed order assigned to the agent
-        $delayedOrder = $this->reportDelayService->getDelayedOrder();
+        $delayedOrder = $this->reportDelayService->assignDelayedOrder();
 
         $delayedOrder->update([
             'agent_id' => $agent->id,

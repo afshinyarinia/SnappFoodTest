@@ -21,6 +21,14 @@ class Order extends Model
         'updated_at'
     ];
 
+    public const STATUS = [
+      "DONE" => "done",
+      "DELAYED" => "delayed",
+      "READY" => "ready",
+      "WAITING" => "waiting",
+      "ON_THE_WAY" => "on_the_way"
+    ];
+
     public function vendor(): BelongsTo
     {
         return $this->belongsTo(Vendor::class);

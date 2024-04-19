@@ -64,7 +64,7 @@ class ReportDelayService
         ];
     }
 
-    public function getDelayedOrder(): DelayedOrder
+    public function assignDelayedOrder(): DelayedOrder
     {
         return DelayedOrder::where('status',DelayedOrder::STATUS['WITHOUT_OWNER'])->orderBy('id')->first();
     }

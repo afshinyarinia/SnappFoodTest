@@ -20,8 +20,8 @@ class DelayedOrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'agent_id' => Agent::factory()->create()->id,
-            'order_id' => Order::factory()->create()->id,
+            'agent_id' => Agent::factory(),
+            'order_id' => Order::factory(),
             'reason' => $this->faker->text(),
             'status' => $this->faker->randomElement(DelayedOrder::STATUS)
         ];
