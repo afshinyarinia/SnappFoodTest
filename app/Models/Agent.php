@@ -18,4 +18,9 @@ class Agent extends Model
     {
         return $this->hasOne(DelayedOrder::class);
     }
+
+    public function hasActiveDelayedOrder(): bool
+    {
+        return $this->delayedOrder()->where('status', DelayedOrder::STATUS['ASSIGNED'])->exists();
+    }
 }

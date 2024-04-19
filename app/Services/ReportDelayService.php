@@ -64,10 +64,8 @@ class ReportDelayService
         ];
     }
 
-    public function getDelayedOrder(Agent $agent)
+    public function getDelayedOrder(): DelayedOrder
     {
-        // TODO: make a repository for different type of queues
-
-        $order_id = Redis::lpop('delayed_orders');
+        return DelayedOrder::where('status',DelayedOrder::STATUS['WITHOUT_OWNER'])->orderBy('id')->first();
     }
 }

@@ -18,9 +18,6 @@ class AgentFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'phone' => $this->faker->phoneNumber,
-            'address' => $this->faker->address,
             'created_at' => now(),
             'updated_at' => now()
         ];

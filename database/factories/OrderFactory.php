@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Vendor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +18,11 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'vendor_id' => $this->faker->numberBetween(1, 10),
+            'vendor_id' => Vendor::factory()->create()->id,
             'order_number' => $this->faker->unique()->randomNumber(8),
             'status' => $this->faker->randomElement(['assigned', 'at_vendor', 'picked', 'delivered']),
             'total' => $this->faker->randomFloat(2, 10, 100),
-            'delivery_time' => $this->faker->dateTimeBetween('now', '+1 week'),
+            'delivery_time' => $this->faker->numberBetween(10,60),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now')
         ];
