@@ -20,10 +20,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // create 10 vendors when each have 5 orders
-        // Create 10 vendors
         $vendors = Vendor::factory()->count(10)->create();
 
-        // Create 5 orders for each vendor
+
         $vendors->each(function ($vendor) {
             $vendor->orders()->saveMany(Order::factory()->count(5)->create([
                 'vendor_id' => $vendor->id
@@ -35,7 +34,7 @@ class DatabaseSeeder extends Seeder
         $order = Order::factory()->create([
             'delivery_time' => 30,
             'status' => Order::STATUS["ON_THE_WAY"],
-            'created_at' => Carbon::now()->subMinutes(40)
+            'created_at' => Carbon::now()->subHours(2)
         ]);
         $order->trip()->save(Trip::factory()->create([
             'status' => Trip::STATUS['ASSIGNED'],

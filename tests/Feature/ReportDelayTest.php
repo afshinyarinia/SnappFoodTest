@@ -34,6 +34,7 @@ test('user can report a delay on order if requirements filled', function () {
     $this->assertDatabaseHas('delay_reports', [
         'order_id' => $this->order->id,
         'type' => DelayReport::TYPE['DELAYED'],
+        'time' => 10 // there should be 10 minutes delay
     ]);
 
 });
