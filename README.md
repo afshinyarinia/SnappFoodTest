@@ -62,6 +62,11 @@ This repository contains a Laravel application that can be easily set up and run
    ```
 8. You can now access the Laravel application at `http://localhost:8000`
 
+9. uou can run the tests with
+    ```
+    php artisan test
+   ```
+
 ## Additional Notes
 - Make sure to have the necessary PHP extensions and dependencies installed as per Laravel requirements.
 - You can customize the application further by modifying the existing codebase.
