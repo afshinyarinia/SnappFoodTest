@@ -29,6 +29,7 @@ docker-compose up -d
 * The project uses Docker Compose to set up the necessary containers for running the Laravel application.
 * Make sure to update the .env file with the appropriate configurations for your Laravel project.
 * You can stop the containers by running docker-compose down in the project directory.
+* If The 8000 port didn't work use 9000 (some unresolved problem with nginx)
 
 # Running Laravel App Locally
 
