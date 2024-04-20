@@ -10,7 +10,7 @@ beforeEach(function () {
     $this->vendor = Vendor::factory()->create();
     $this->order = Order::factory()->create([
         'vendor_id' => $this->vendor->id,
-        'delivery_time' => 60,
+        'delivery_time' => 30,
         'created_at' => Carbon::now()->subMinutes(10),
         'updated_at' => Carbon::now(),
     ]);
