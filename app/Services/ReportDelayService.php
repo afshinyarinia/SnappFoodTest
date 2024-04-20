@@ -53,6 +53,15 @@ class ReportDelayService
             ];
         }
         // create a delay report
+        $this->createDelayReport($order);
+        return [
+            'message' => 'Order has been reported as delayed',
+            'status' => 200
+        ];
+    }
+
+    private function createDelayReport(Order $order): void
+    {
         $minutesSinceOrderCreation = $order->created_at->diffInMinutes(now());
         $delayInMinutes = $minutesSinceOrderCreation - $order->delivery_time;
         DelayReport::create([
@@ -62,12 +71,8 @@ class ReportDelayService
         ]);
         // push the order to the delay queue in redis
         DelayedOrder::create([
-           'order_id' => $order->id
+            'order_id' => $order->id
         ]);
-        return [
-            'message' => 'Order has been reported as delayed',
-            'status' => 200
-        ];
     }
 
     public function assignDelayedOrder(): DelayedOrder|null
