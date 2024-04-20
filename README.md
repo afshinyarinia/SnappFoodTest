@@ -20,6 +20,7 @@ The project assigned to me for consideration at SnappFood involves the developme
 * more edge case tests
 * using repository for estimation clients 
 * cache queries like the get vendors delayed order report (probably using redis)
+* fix that nginx bug in docker
 * I didn't have enough time for it :)
 
 # Running Project With Docker
