@@ -64,11 +64,15 @@ class ReportDelayService
     {
         $minutesSinceOrderCreation = $order->created_at->diffInMinutes(now());
         $delayInMinutes = $minutesSinceOrderCreation - $order->delivery_time;
-        DelayReport::create([
-            'order_id' => $order->id,
-            'type' => DelayReport::TYPE['DELAYED'],
-            'time' => $delayInMinutes
-        ]);
+        DelayReport::firstOrCreate(
+            [
+                'order_id' => $order->id,
+                'type' => DelayReport::TYPE['DELAYED']
+            ],
+            [
+                'time' => $delayInMinutes
+            ]
+        );
         // push the order to the delay queue in redis
         DelayedOrder::create([
             'order_id' => $order->id
