@@ -19,7 +19,7 @@ The project assigned to me for consideration at SnappFood involves the developme
 * better swagger docs with better request and response data
 * more edge case tests
 * using repository for estimation clients 
-* cache queries like the get report (probably using redis)
+* cache queries like the get vendors delayed order report (probably using redis)
 * I didn't have enough time for it :)
 
 # Running Project With Docker
