@@ -1,0 +1,51 @@
+# PHP
+bootstrap/cache/services.php
+storage/app/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+vendor/**/test*
+vendor/**/tests*
+vendor/**/Tests*
+phpunit.xml
+phpspec.yml
+# Git
+.git
+.gitignore
+.editorconfig
+.mailmap
+**.git
+**.gitignore
+**.gitattributes
+
+# ignore all markdown files (md) beside all README*.md other than README-secret.md
+README.md
+readme.md
+LICENSE
+
+# Docker
+Dockerfile
+Containerfile
+Dockerfile.prod
+Dockerfile.env
+Dockerfile.dev
+docker-compose.yml
+docker-compose.dev.yml
+docker-compose.prod.yml
+docker-compose.yaml
+docker-compose.dev.yaml
+docker-compose.prod.yaml
+docker-compose.test.yml
+docker-compose.staging.yml
+docker-compose.test.yaml
+docker-compose.staging.yaml
+.docker
+**/docker
+docker/*
+.env.backup
+.env.example
+
+# IDE
+.idea
+**/.vscode

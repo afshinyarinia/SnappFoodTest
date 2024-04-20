@@ -3,19 +3,25 @@ version: '3.9'
 services:
   mysql:
     image: mysql:8.0
+    container_name: mysql
     ports:
       - "3306:3306"
+    restart: unless-stopped
+    tty: true
     volumes:
-      - .docker/mysql:/var/lib/mysql
+      - ".docker/mysql:/var/lib/mysql"
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
     env_file:
       - .docker/env_vars/.env
     networks:
       - laravel
+
 
   app:
     build:
@@ -23,25 +29,28 @@ services:
         dockerfile: Dockerfile
     container_name: app
     hostname: app
-    restart: always
+    tty: true
+    ports:
+      - "9000:9000"
     volumes:
-      - .:/var/www/html
-    working_dir: /var/www/html
-    depends_on:
-      - mysql
+      - .:/var/www/snappfood
+    working_dir: /var/www/snappfood
     networks:
       - laravel
 
   nginx:
     image: nginx:latest
-    container_name: laravel_nginx
+    container_name: nginx
+    restart: always
+    tty: true
     ports:
-      - "8080:80"
+      - "8000:80"
     volumes:
-      - .docker/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - .:/var/www/html
+      - ".docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+      - ".:/var/www/snappfood"
     depends_on:
       - app
+      - mysql
     networks:
       - laravel
 

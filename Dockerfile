@@ -1,5 +1,5 @@
 FROM php:8.2-fpm as php
-ENV PRJSETUP_PATH="/var/www/html"
+ENV PRJSETUP_PATH="/var/www/snappfood"
 # Install dependencies
 RUN apt-get update && \
     apt-get install -y \
@@ -10,10 +10,10 @@ RUN apt-get update && \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql zip
+RUN docker-php-ext-install pdo pdo_mysql zip
 
 # Copy the application code
-COPY . /var/www/html
+COPY . /var/www/snappfood
 
 # Set the working directory
 WORKDIR ${PRJSETUP_PATH}
@@ -25,7 +25,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/snappfood/storage /var/www/snappfood/bootstrap/cache
 RUN cp ${PRJSETUP_PATH}/docker-entrypoint.sh /docker-entrypoint.sh \
     && chmod +x /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
