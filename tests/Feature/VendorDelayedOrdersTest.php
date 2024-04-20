@@ -28,7 +28,7 @@ beforeEach(function () {
     });
 });
 
-test('vendor can see the report of its delayed orders', function () {
+test('admin can see the report of vendors with delay of past 7 days', function () {
 
     $response = $this->get(route('vendors.get-delayed-orders-report'));
 
