@@ -36,10 +36,6 @@ class DatabaseSeeder extends Seeder
             'status' => Order::STATUS["ON_THE_WAY"],
             'created_at' => Carbon::now()->subHours(2)
         ]);
-        $order->trip()->save(Trip::factory()->create([
-            'status' => Trip::STATUS['ASSIGNED'],
-            'order_id' => $order->id
-        ]));
 
     }
 }

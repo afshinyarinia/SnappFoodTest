@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DelayReportResource;
 use App\Models\Agent;
 use App\Models\DelayedOrder;
 use App\Services\ReportDelayService;
@@ -34,7 +35,11 @@ class AgentsController extends Controller
     {
         // see if the agent don't have any active order to process
         if($agent->hasActiveDelayedOrder()){
+            $delayedOrder = DelayedOrder::where('agent_id',$agent->id)
+                ->where('status',DelayedOrder::STATUS['ASSIGNED'])
+                ->first();
             return response()->json([
+                'data' => DelayReportResource::make($delayedOrder),
                 'message' => 'You Already Have An Assigned Delayed Order To Resolve'
             ],400);
         }
@@ -51,6 +56,7 @@ class AgentsController extends Controller
         ]);
 
         return response()->json([
+            'data' => DelayReportResource::make($delayedOrder),
             'message' => 'Delayed Order Fetched Successfully'
         ], 200);
 
