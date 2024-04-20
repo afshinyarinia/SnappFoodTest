@@ -28,12 +28,8 @@ services:
         context: .
         dockerfile: Dockerfile
     container_name: app
-    hostname: app
-    tty: true
     ports:
       - "9000:9000"
-    volumes:
-      - .:/var/www/snappfood
     working_dir: /var/www/snappfood
     networks:
       - laravel

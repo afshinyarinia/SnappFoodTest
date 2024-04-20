@@ -28,4 +28,7 @@ RUN composer install
 RUN chown -R www-data:www-data /var/www/snappfood/storage /var/www/snappfood/bootstrap/cache
 RUN cp ${PRJSETUP_PATH}/docker-entrypoint.sh /docker-entrypoint.sh \
     && chmod +x /docker-entrypoint.sh
+
+EXPOSE 9000
+
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
