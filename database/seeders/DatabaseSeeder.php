@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Agent;
+use App\Models\DelayedOrder;
+use App\Models\DelayReport;
 use App\Models\Order;
 use App\Models\Trip;
 use App\Models\User;
@@ -28,6 +30,14 @@ class DatabaseSeeder extends Seeder
                 'vendor_id' => $vendor->id
             ]));
         });
+        // create random delayed orders
+        $orders = Order::inRandomOrder()->limit(5)->get();
+        $orders->each(function (Order $order) {
+            DelayReport::factory()->create([
+                'order_id' => $order->id,
+            ]);
+        });
+
         // create 5 agents
         Agent::factory()->count(5)->create();
         // create order for api check that is delayed
