@@ -9,6 +9,12 @@ The project assigned to me for consideration at SnappFood involves the developme
 * postman collection at `docs/postman`
 * swagger documentation at `http://localhost:8000/api/docs`
 
+
+## Api Call Order To Test All Tasks
+* order(id:51) can be report as delayed
+* then an agent(id:1) can get that report
+* then you can see the delayed vendors report
+
 # Running Project With Docker
 
 ## Prerequisites
