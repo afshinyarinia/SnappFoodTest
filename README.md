@@ -15,6 +15,13 @@ The project assigned to me for consideration at SnappFood involves the developme
 * then an agent(id:1) can get that report
 * then you can see the delayed vendors report
 
+## Things tha can be Improved
+* better swagger docs with better request and response data
+* more edge case tests
+* using repository for estimation clients 
+* cache queries like the get report (probably using redis)
+* I didn't have enough time for it :)
+
 # Running Project With Docker
 
 ## Prerequisites
